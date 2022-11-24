@@ -19,8 +19,9 @@ class Users{
     $this->birth = $birth;
     $this->town = $town;
     $this->sex = $sex;
-        
-    $this->save();
+    if(!$this->check_user()){
+      $this->save();
+    }
   }
   public function save()
   {
@@ -36,15 +37,22 @@ class Users{
     $connect->query($sql);
   }
 
-  public function update($name, $birth){
+  public function check_user($name)
+  {
     $connect = mysqli_connect("localhost:8889","root","root","user");
     $sql='SELECT * FROM user WHERE name = "'.$name.'"';
     $sql_result = $connect->query($sql);
     $check_name = mysqli_fetch_array($sql_result);
+    return $check_name;
+  }
+
+  public function format_user($name, $new_birth){
+   
+    $check_user = $this->check_user($name);
         
-    if($check_name)
+    if($check_user)
     {
-      $format_user = new Users($check_name['name'], $check_name['surname'], $birth, $check_name['town'], $check_name['sex']);
+      $format_user = new Users($check_user['name'], $check_user['surname'], $new_birth, $check_user['town'], $check_user['sex']);
       return $format_user;
     }
   }

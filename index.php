@@ -11,7 +11,7 @@
       print_r($list);
       echo'</pre>';
       echo'<pre>';
-      print_r($model->update('svet', $_POST['birth']));
+      print_r($model->format_user('svet', $_POST['birth']));
       echo'</pre>';
       die;
     }
