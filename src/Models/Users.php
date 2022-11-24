@@ -8,8 +8,9 @@ public $id;
 public $name;
 public $surname;
 public $birth;
-public $sex;
 public $town;
+public $sex;
+
 public function __construct($name, $surname, $birth, $town, $sex)
    {
     
