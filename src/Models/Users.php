@@ -24,13 +24,13 @@ class Users{
   }
   public function save()
   {
+    
     $connect = mysqli_connect("localhost:8889","root","root","user");
     $sql='INSERT INTO user(name, surname, birth, town, sex) VALUES ("'.$this->name.'", "'.$this->surname.'", "'.$this->birth.'", "'.$this->town.'", "'.$this->sex.'")';
     $connect->query($sql);
   }
   public function delete($id)
   {
-    
     $sql='DELETE FROM user WHERE id = "'. $id.'"';
     $connect = mysqli_connect("localhost:8889","root","root","user");
     $connect->query($sql);
@@ -47,11 +47,6 @@ class Users{
       $format_user = new Users($check_name['name'], $check_name['surname'], $birth, $check_name['town'], $check_name['sex']);
       return $format_user;
     }
-
-    $this->id= $id;
-    $sql='DELETE FROM user WHERE id = "'. $this->id.'"';
-    $connect = mysqli_connect("localhost:8889","root","root","user");
-    $connect->query($sql);
   }
 
   static function age($birth)
