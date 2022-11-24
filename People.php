@@ -1,8 +1,7 @@
 <?php
-require 'Users.php';
+require 'User.php';
 error_reporting(E_ALL);
 ini_set('display_errors',1);
-
 
 Class People{
     public $users;
@@ -12,13 +11,12 @@ Class People{
        $this->users = [];
        $list = $this->select($operator, $id);
        foreach($list as $one){
-        $person = new Users($one['name'], $one['surname'], $one['birth'], $one['town'], $one['sex']);
+        $person = new User($one['name'], $one['surname'], $one['birth'], $one['town'], $one['sex']);
         $this->addUser($person);
         }
-        return $this->users;
     }
 
-    public function addUser(Users $person){
+    public function addUser(User $person){
         $this->users[] = $person;
     }
 
@@ -29,12 +27,11 @@ Class People{
         return $result;
     }
 
-    public function delete_person(Users $person){
+    public function delete_person(User $person){
          $delete_person = array_filter($this->users, function($user) use ($person){
         return $user == $person;});
         $sql='DELETE FROM user WHERE name = "'. $person->name.'"';
-        $connect = mysqli_connect("localhost:8889","root","root","user");
-        $connect->query($sql);
+        User::$connect->query($sql);
 
         }
 

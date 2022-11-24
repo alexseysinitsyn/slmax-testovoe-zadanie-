@@ -1,22 +1,25 @@
 <?php
     require 'People.php';
     if($_POST){
-     $user = new Users($_POST['name'], $_POST['surname'], $_POST['birth'], $_POST['town'], $_POST['sex']);
+    // $user = new User($_POST['name'], $_POST['surname'], $_POST['birth'], $_POST['town'], $_POST['sex']);
      $list = new People('>=', 214);
+
+     echo'<pre>';
+    // print_r($user);
+     echo'</pre>';
+die;
     echo'<pre>';
     print_r($list);
     echo'</pre>';
+    
     echo'<pre>';
-    print_r($user);
+    print_r(User::age($user->birth));
     echo'</pre>';
     echo'<pre>';
-    print_r(Users::age($user->birth));
+    print_r(User::sextostring($user->sex));
     echo'</pre>';
     echo'<pre>';
-    print_r(Users::sextostring($user->sex));
-    echo'</pre>';
-    echo'<pre>';
-    print_r($model->format_user($user->name, '2000-11-01'));
+    print_r($user->format_user($user->name, '2000-11-01'));
     echo'</pre>';
       die;
 
@@ -27,10 +30,7 @@
   <head>
     <meta charset="utf-8">
     <title>Registration</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./vendor/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./css/style.css">
-  </head>
+   </head>
 
   <body>
 
