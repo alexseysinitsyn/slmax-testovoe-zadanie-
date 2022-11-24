@@ -19,7 +19,7 @@ class Users{
     $this->birth = $birth;
     $this->town = $town;
     $this->sex = $sex;
-    if(!$this->check_user()){
+    if(!$this->check_user($this->name)){
       $this->save();
     }
   }
