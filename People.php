@@ -1,11 +1,8 @@
 <?php
-
-namespace Models;
+require 'Users.php';
 error_reporting(E_ALL);
 ini_set('display_errors',1);
-require 'vendor/autoload.php';
 
-use Models\Users;
 
 Class People{
     public $users;

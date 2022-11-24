@@ -1,18 +1,14 @@
 <?php
-    require 'vendor/autoload.php';
-
-    use Models\Users;
-    use Models\People;
+    require 'People.php';
     if($_POST){
       $model = new Users($_POST['name'], $_POST['surname'], $_POST['birth'], $_POST['town'], $_POST['sex']);
-      $list = new People('>', 2);
-      //$list->delete_person($model);
-      echo'<pre>';
-      print_r($list);
-      echo'</pre>';
-      echo'<pre>';
-      print_r($model->format_user('svet', $_POST['birth']));
-      echo'</pre>';
+     $list = new People('<', 5);
+    echo'<pre>';
+    print_r($list);
+    echo'</pre>';
+    echo'<pre>';
+    print_r($model);
+    echo'</pre>';
       die;
     }
 ?>
