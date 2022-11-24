@@ -2,14 +2,24 @@
     require 'People.php';
     if($_POST){
       $model = new Users($_POST['name'], $_POST['surname'], $_POST['birth'], $_POST['town'], $_POST['sex']);
-     $list = new People('<', 5);
+     $list = new People('>=', 214);
     echo'<pre>';
     print_r($list);
     echo'</pre>';
     echo'<pre>';
     print_r($model);
     echo'</pre>';
+    echo'<pre>';
+    print_r(Users::age($model->birth));
+    echo'</pre>';
+    echo'<pre>';
+    print_r(Users::sextostring($model->sex));
+    echo'</pre>';
+    echo'<pre>';
+    print_r($model->format_user($model->name, '2000-11-01'));
+    echo'</pre>';
       die;
+
     }
 ?>
 <!DOCTYPE html>
