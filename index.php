@@ -1,25 +1,24 @@
 <?php
     require 'People.php';
     if($_POST){
-    // $user = new User($_POST['name'], $_POST['surname'], $_POST['birth'], $_POST['town'], $_POST['sex']);
-     $list = new People('>=', 214);
+    $user = new User($_POST['name'], $_POST['surname'], $_POST['birth'], $_POST['town'], $_POST['sex']);
+     $list = new People('<=', 4);
 
      echo'<pre>';
-    // print_r($user);
+    print_r($user);
      echo'</pre>';
-die;
     echo'<pre>';
     print_r($list);
     echo'</pre>';
     
     echo'<pre>';
-    print_r(User::age($user->birth));
+    print_r(User::age($_POST['birth']));
     echo'</pre>';
     echo'<pre>';
-    print_r(User::sextostring($user->sex));
+    print_r(User::sextostring($_POST['sex']));
     echo'</pre>';
     echo'<pre>';
-    print_r($user->format_user($user->name, '2000-11-01'));
+    print_r($user->format_user($_POST['name'], '2000-11-01'));
     echo'</pre>';
       die;
 
